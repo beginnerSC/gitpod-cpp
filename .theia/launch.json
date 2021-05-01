@@ -9,6 +9,13 @@
         "request": "launch",
         "program": "${file}",
         "console": "internalConsole"
-    }
+    }, {
+        "type": "gdb",
+        "request": "launch",
+        "name": "Debug Hello World (GDB)",
+        "target": "./cpp/a.out",
+        "cwd": "${workspaceRoot}",
+        "valuesFormatting": "parseText"
+    }    
   ]
 }

@@ -1,7 +1,13 @@
 #include <iostream>
 
-int main()
+int main() 
 {
-    std::cout << "test" << std::endl;
+    std::cout << "Hello World!" << std::endl;
+
+    for (size_t i=0 ; i<10 ; i++)
+    {
+        std::cout << i << std::endl;
+    }
+
     return 0;
 }
