@@ -81,6 +81,8 @@ def minimax(dists):
 
     D = dists.copy()  # Distances between clusters.
     size = np.ones(n, dtype=np.intc)  # Sizes of clusters.
+    
+    indices = [set([i]) for i in range(n)]
 
 #     new_dist = linkage_methods[method]
 
@@ -144,6 +146,11 @@ def minimax(dists):
         Z[k, 3] = nx + ny
         size[x] = 0  # Cluster x will be dropped.
         size[y] = nx + ny  # Cluster y will be replaced with the new cluster
+        
+        indices[y] |= indices[x]
+        indices[x] = set()
+
+        a=1
 
         # Update the distance matrix.
         for i in range(n):
