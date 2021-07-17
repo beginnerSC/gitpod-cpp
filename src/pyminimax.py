@@ -159,11 +159,16 @@ def minimax(dists):
             # D[condensed_index(n, i, y)] = max(D[condensed_index(n, i, x)], D[condensed_index(n, i, y)])  # complete linkage
 
             all_indices = indices[y] | indices[i]
-            min_idx = min(all_indices)
+            max_idx = max(all_indices)
 
-            mm = [[dists[condensed_index(n, j, k)] for j in all_indices if j < k] for k in all_indices - {min_idx}]
-            print(mm)
-            D[condensed_index(n, i, y)] = min(max(dists[condensed_index(n, j, k)] for j in all_indices if j < k) for k in all_indices - {min_idx})
+            mm = [[dists[condensed_index(n, j, k)] for k in all_indices if j < k] for j in all_indices - {max_idx}]
+            
+            # for row in mm:
+            #     print(row)
+            print(y, i, min(max(dists[condensed_index(n, j, k)] for k in all_indices if j < k) for j in all_indices - {max_idx}))
+            # print()
+
+            D[condensed_index(n, i, y)] = min(max(dists[condensed_index(n, j, k)] for k in all_indices if j < k) for j in all_indices - {max_idx})
 
             # 要 implement minimax 需要知道 x y 裡各有哪些原本資料點的 index，
             # 原本的 distance matrix 要從 dists 裡拿，因為 D 裡的值會一直被覆蓋過去
