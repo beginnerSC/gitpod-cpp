@@ -165,13 +165,17 @@ def minimax(dists):
             
             # for row in mm:
             #     print(row)
-            print(y, i, min(max(dists[condensed_index(n, j, k)] for k in all_indices if j < k) for j in all_indices - {max_idx}))
-            # print()
+            # print(y, i, min(max(dists[condensed_index(n, j, k)] for k in all_indices if j < k) for j in all_indices - {max_idx}))
+            print()
 
             D[condensed_index(n, i, y)] = min(max(dists[condensed_index(n, j, k)] for k in all_indices if j < k) for j in all_indices - {max_idx})
 
+            aaa = 1
+            
             # 要 implement minimax 需要知道 x y 裡各有哪些原本資料點的 index，
             # 原本的 distance matrix 要從 dists 裡拿，因為 D 裡的值會一直被覆蓋過去
+
+            # watch D matrix: [[(i, j, D[condensed_index(12, i, j)]) for j in range(12) if i>j] for i in range(12)]
 
     # Sort Z by cluster distances.
     order = np.argsort(Z_arr[:, 2], kind='mergesort')
