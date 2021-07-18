@@ -150,6 +150,8 @@ def minimax(dists):
         indices[y] |= indices[x]
         indices[x] = set()
 
+        aaa=1
+
         # Update the distance matrix.
         for i in range(n):
             ni = size[i]
@@ -170,7 +172,7 @@ def minimax(dists):
 
             D[condensed_index(n, i, y)] = min(max(dists[condensed_index(n, j, k)] for k in all_indices if j < k) for j in all_indices - {max_idx})
 
-            aaa = 1
+            aaa=1
             
             # 要 implement minimax 需要知道 x y 裡各有哪些原本資料點的 index，
             # 原本的 distance matrix 要從 dists 裡拿，因為 D 裡的值會一直被覆蓋過去
