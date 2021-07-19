@@ -161,16 +161,15 @@ def minimax(dists):
             # D[condensed_index(n, i, y)] = max(D[condensed_index(n, i, x)], D[condensed_index(n, i, y)])  # complete linkage
 
             all_indices = indices[y] | indices[i]
-            max_idx = max(all_indices)
-
-            mm = [[dists[condensed_index(n, j, k)] for k in all_indices if j < k] for j in all_indices - {max_idx}]
             
+            # max_idx = max(all_indices)
+            # mm = [[dists[condensed_index(n, j, k)] for k in all_indices if j < k] for j in all_indices - {max_idx}]            
             # for row in mm:
             #     print(row)
             # print(y, i, min(max(dists[condensed_index(n, j, k)] for k in all_indices if j < k) for j in all_indices - {max_idx}))
-            print()
+            # print()
 
-            D[condensed_index(n, i, y)] = min(max(dists[condensed_index(n, j, k)] for k in all_indices if j < k) for j in all_indices - {max_idx})
+            D[condensed_index(n, i, y)] = min(max(dists[condensed_index(n, j, k) if j!=k else 0] for k in all_indices) for j in all_indices)
 
             aaa=1
             
