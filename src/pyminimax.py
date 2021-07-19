@@ -169,7 +169,7 @@ def minimax(dists):
             # print(y, i, min(max(dists[condensed_index(n, j, k)] for k in all_indices if j < k) for j in all_indices - {max_idx}))
             # print()
 
-            D[condensed_index(n, i, y)] = min(max(dists[condensed_index(n, j, k) if j!=k else 0] for k in all_indices) for j in all_indices)
+            D[condensed_index(n, i, y)] = min(max(dists[condensed_index(n, j, k)] if j!=k else 0 for k in all_indices) for j in all_indices)
 
             aaa=1
             
